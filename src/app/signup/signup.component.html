@@ -1,6 +1,8 @@
 <!--nav bar-->
 <nav class="navbar navbar-inverse" id="nav-top">
   <div class="container-fluid">
+    <a class="navbar-brand brand" href="#">
+      <b>Comunev</b></a>
     <div class="collapse navbar-collapse" id="navbar1">             
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -14,50 +16,86 @@
   </div>
 </nav>
 
+<!--animation-->
+<div class="area" >
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
 <!--sign up-->
 <div class="modal-dialog">
   <div class="modal-content"><br>
-    <form name="signup" [formGroup]="regForm" (ngSubmit)="OnSubmit()">
+    <form [formGroup]="regForm" (ngSubmit)="OnSubmit()">
       <div>
         <div class="left">
           <h1>Sign up</h1>
             <div class="form-group">
-              <b>First name:</b>
-              <input type="text" class="form-control" placeholder="FirstName" formControlName="firstname">
+              <b>First Name:</b>
+              <input type="text" class="form-control" placeholder="FirstName" formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                <div *ngIf="submitted && f.firstname.errors" class="alert alert-danger">
+                  <div *ngIf="f.firstname.errors.required">First Name is required.</div>
+                </div>
             </div>
                   
             <div class="form-group">
               <b>Last Name:</b>
-              <input type="text" class="form-control" placeholder="LastName" formControlName="lastname">
+              <input type="text" class="form-control" placeholder="LastName" formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                <div *ngIf="submitted && f.lastname.errors" class="alert alert-danger">
+                  <div *ngIf="f.lastname.errors.required">Last Name is required.</div>
+                </div>
             </div>
                   
             <div class="form-group">
               <b>Username:</b>
-              <input type="text" class="form-control" placeholder="Username" formControlName="username">
+              <input type="text" class="form-control" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="alert alert-danger">
+                  <div *ngIf="f.username.errors.required">Username is required.</div>                  
+                  <div *ngIf="f.username.errors.minlength">Username should be minimum 5 characters long.</div>
+                </div>
             </div>
               
             <div class="form-group">
               <b>Password:</b>
-              <input type="password" class="form-control" placeholder="Password" formControlName="password">
+              <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="alert alert-danger">
+                  <div *ngIf="f.password.errors.required">Password is required.</div>
+                  <div *ngIf="f.username.errors.minlength">Password should be minimum 8 characters long.</div>
+                </div>
             </div>
 
             <div class="form-group">
               <b>Date of Birth:</b>
-              <input type="date" class="form-control" placeholder="DOB" formControlName="dob">
+              <input type="date" class="form-control" placeholder="DOB" formControlName="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+                <div *ngIf="submitted && f.dob.errors" class="alert alert-danger">
+                  <div *ngIf="f.dob.errors.required">Date of Birth is required.</div>
+                </div>
             </div>
 
             <div class="form-group">
               <b>Country:</b>
-              <input type="text" class="form-control" placeholder="Country" formControlName="country">
+              <input type="text" class="form-control" placeholder="Country" formControlName="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }" />
+                <div *ngIf="submitted && f.country.errors" class="alert alert-danger">
+                  <div *ngIf="f.country.errors.required">Country is required.</div>
+                </div>
             </div>
 
             <div class="form-group text-center">
-              <button type="submit" class="btn btn-success btn-lg" value="signup" [disabled]="!regForm.valid">Sign Up</button>
+              <button type="submit" class="btn btn-success btn-lg" value="signup">Sign Up</button>
               <a href="#" class="btn btn-link">Have an account?</a>
             </div>
           </div>
           <div class="right">
-            <span class="loginwith">Sign in with<br />other network</span>
+            <span class="loginwith">Sign in with<br />social account.</span>
             <br>
             <button class="social-signin facebook"><a href="https://www.facebook.com/">Log in with Facebook</a></button>
             <button class="social-signin twitter"><a href="https://twitter.com/login">Log in with Twitter</a></button>

@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
 
   }
 
-  get formData(){ return this.regForm.controls}
+  get f(){ return this.regForm.controls}
 
   OnSubmit(){
     this.submitted = true;
@@ -35,7 +35,8 @@ export class SignupComponent implements OnInit {
       return;
     }
 
-    console.log(JSON.stringify(this.regForm.value));
+    /*console.log(JSON.stringify(this.regForm.value));*/
+    alert('SUCCESS!! :-)')
 
   }
 }
